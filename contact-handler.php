@@ -9,14 +9,14 @@ $phone = isset($_POST['phone']) ? htmlspecialchars(trim($_POST['phone'])) : '';
 $message = isset($_POST['message']) ? nl2br(htmlspecialchars(trim($_POST['message']))) : '';
 
 if (empty($firstName) || empty($lastName) || empty($email) || empty($phone) || empty($message)) {
-    echo json_encode(['success' => false, 'message' => 'Please fill in all required fields.']);
-    exit;
+  echo json_encode(['success' => false, 'message' => 'Please fill in all required fields.']);
+  exit;
 }
 
 $fullName = $firstName . ' ' . $lastName;
 
 // Email settings
-$to = 'neupanerijan6@gmail.com';
+$to = 'info@raisekuwacorner.com.au';
 $subject = 'New Contact Form Submission - Rai Sekuwa Corner';
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
@@ -46,7 +46,7 @@ $body = "
 $sent = mail($to, $subject, $body, $headers);
 
 if ($sent) {
-    echo json_encode(['success' => true, 'message' => 'Message sent successfully!']);
+  echo json_encode(['success' => true, 'message' => 'Message sent successfully!']);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Failed to send message. Please try again later.']);
+  echo json_encode(['success' => false, 'message' => 'Failed to send message. Please try again later.']);
 }
